@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=4 uid="uid://ddwgfcpabegla"]
+[gd_scene load_steps=3 format=4 uid="uid://ddwgfcpabegla"]
 
+[ext_resource type="Texture2D" uid="uid://fy6nk5vcwcjg" path="res://taustakuva/pelitausta.png" id="1_0ukcc"]
 [ext_resource type="TileSet" uid="uid://celmanpeemho8" path="res://level/scane/leveltiles.tres" id="1_414cb"]
 
 [node name="main" type="Node2D"]
+
+[node name="taustakuva" type="Sprite2D" parent="."]
+position = Vector2(641, 365)
+texture = ExtResource("1_0ukcc")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
