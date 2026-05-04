@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://4dtjqnqftuu"]
+[gd_scene load_steps=8 format=3 uid="uid://blt22gdd82uj3"]
 
 [ext_resource type="Texture2D" uid="uid://chtulh072ekve" path="res://pelaaja/pelaaja.png" id="1_1tdaa"]
 
 [sub_resource type="GDScript" id="GDScript_1tdaa"]
 script/source = "extends CharacterBody2D
+var score = 0
+func add_score(amount):
+	score += amount
+	print(score)
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -48,6 +52,7 @@ func update_animation(direction):
 	# Flip sprite based on direction
 	if direction != 0:
 		sprite.flip_h = direction < 0
+		
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tdaa"]

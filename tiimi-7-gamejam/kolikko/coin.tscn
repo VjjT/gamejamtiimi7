@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dv0oxehh2jdh7"]
+
+[ext_resource type="Script" uid="uid://cd6yae3r1u5j0" path="res://kolikko/coin.gd" id="1_0t63x"]
+[ext_resource type="Texture2D" uid="uid://bdh2fk3twksb0" path="res://kolikko/kolikko.png" id="1_d5gmh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5gmh"]
+radius = 12.206555
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t63x"]
+atlas = ExtResource("1_d5gmh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7riw"]
+atlas = ExtResource("1_d5gmh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pdq0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t63x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7riw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="coin" type="Area2D"]
+script = ExtResource("1_0t63x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d5gmh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_pdq0q")
+autoplay = "default"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://ddwgfcpabegla"]
+[gd_scene load_steps=5 format=4 uid="uid://ddwgfcpabegla"]
 
 [ext_resource type="Texture2D" uid="uid://fy6nk5vcwcjg" path="res://taustakuva/pelitausta.png" id="1_0ukcc"]
 [ext_resource type="TileSet" uid="uid://celmanpeemho8" path="res://level/scane/leveltiles.tres" id="1_414cb"]
-[ext_resource type="PackedScene" uid="uid://4dtjqnqftuu" path="res://pelaaja/pelaaja.tscn" id="3_nt2wp"]
+[ext_resource type="PackedScene" uid="uid://blt22gdd82uj3" path="res://pelaaja/pelaaja.tscn" id="3_nt2wp"]
+[ext_resource type="PackedScene" uid="uid://dv0oxehh2jdh7" path="res://kolikko/coin.tscn" id="4_qh04p"]
 
 [node name="main" type="Node2D"]
 
@@ -22,4 +23,7 @@ tile_map_data = PackedByteArray("AAD//xQAAwAAAAIAAAAAABQAAwAAAAIAAAABABUAAwAAAAI
 tile_set = ExtResource("1_414cb")
 
 [node name="pelaaja" parent="." instance=ExtResource("3_nt2wp")]
-position = Vector2(20, 375)
+position = Vector2(161, 373)
+
+[node name="coin" parent="." instance=ExtResource("4_qh04p")]
+position = Vector2(258, 424)
