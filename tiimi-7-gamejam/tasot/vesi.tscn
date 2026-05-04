@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://scy4degaool4"]
+
+[ext_resource type="Script" uid="uid://bsl05cd55etbc" path="res://vesi.gd" id="1_4w4ol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnpme"]
+size = Vector2(1332, 35)
+
+[node name="vesi" type="Area2D"]
+script = ExtResource("1_4w4ol")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_xnpme")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

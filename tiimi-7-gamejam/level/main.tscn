@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=4 uid="uid://ddwgfcpabegla"]
+[gd_scene load_steps=7 format=4 uid="uid://ddwgfcpabegla"]
 
 [ext_resource type="Texture2D" uid="uid://fy6nk5vcwcjg" path="res://taustakuva/pelitausta.png" id="1_0ukcc"]
 [ext_resource type="TileSet" uid="uid://celmanpeemho8" path="res://level/scane/leveltiles.tres" id="1_414cb"]
+[ext_resource type="PackedScene" uid="uid://scy4degaool4" path="res://tasot/vesi.tscn" id="1_k8f8b"]
 [ext_resource type="PackedScene" uid="uid://blt22gdd82uj3" path="res://pelaaja/pelaaja.tscn" id="3_nt2wp"]
 [ext_resource type="PackedScene" uid="uid://dv0oxehh2jdh7" path="res://kolikko/coin.tscn" id="4_qh04p"]
+[ext_resource type="Texture2D" uid="uid://dskoq4j2re1dx" path="res://heart/heart.png" id="6_7vc00"]
 
 [node name="main" type="Node2D"]
+
+[node name="vesi2" parent="." instance=ExtResource("1_k8f8b")]
+position = Vector2(634, 605)
 
 [node name="taustakuva" type="Sprite2D" parent="."]
 position = Vector2(643, 361)
@@ -27,3 +32,26 @@ position = Vector2(161, 373)
 
 [node name="coin" parent="." instance=ExtResource("4_qh04p")]
 position = Vector2(258, 424)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1176.0
+offset_top = 41.0
+offset_right = 1216.0
+offset_bottom = 81.0
+texture = ExtResource("6_7vc00")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1214.0
+offset_top = 41.0
+offset_right = 1254.0
+offset_bottom = 81.0
+texture = ExtResource("6_7vc00")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1195.0
+offset_top = 21.0
+offset_right = 1235.0
+offset_bottom = 61.0
+texture = ExtResource("6_7vc00")
