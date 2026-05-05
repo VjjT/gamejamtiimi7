@@ -1,7 +1,10 @@
 extends CharacterBody2D
+
 @onready var heart = get_node("/root/main/CanvasLayer/heart")
 @onready var score_label = get_node("/root/main/CanvasLayer/score_label")
 @onready var sprite = $AnimatedSprite2D
+@onready var coin_sound = $AudioStreamPlayer2D  
+@onready var water_sound = $AudioStreamPlayer2D_vesi2
 var score = 0
 var health = 3
 var max_health = 3
@@ -16,6 +19,9 @@ func _ready():
 	update_heart()
 	update_score()
 	add_to_group("player")
+
+func play_coin_sound():          
+	coin_sound.play()
 
 func add_score(amount):
 	score += amount
@@ -32,7 +38,7 @@ func update_heart():
 		return
 	for i in range(heart.get_child_count()):
 		heart.get_child(i).visible = i < health
-		
+
 func take_damage(amount: int = 1):
 	for i in range(amount):
 		die()
@@ -42,7 +48,7 @@ func die():
 	update_heart()
 	if health <= 0:
 		print("GAME OVER")
-		get_tree().reload_current_scene()
+		get_tree().call_deferred("reload_current_scene")
 		return
 	global_position = start_position + Vector2(0, -10)
 	velocity = Vector2.ZERO
@@ -73,3 +79,6 @@ func update_animation(direction):
 		sprite.play("idle")
 	if direction != 0:
 		sprite.flip_h = direction < 0
+
+func play_water_sound():
+	water_sound.play()

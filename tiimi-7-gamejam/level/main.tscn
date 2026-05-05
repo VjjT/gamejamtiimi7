@@ -1,17 +1,21 @@
-[gd_scene load_steps=14 format=4 uid="uid://ddwgfcpabegla"]
+[gd_scene load_steps=18 format=4 uid="uid://ddwgfcpabegla"]
 
 [ext_resource type="Texture2D" uid="uid://fy6nk5vcwcjg" path="res://taustakuva/pelitausta.png" id="1_0ukcc"]
 [ext_resource type="TileSet" uid="uid://celmanpeemho8" path="res://level/scane/leveltiles.tres" id="1_414cb"]
 [ext_resource type="PackedScene" uid="uid://scy4degaool4" path="res://tasot/vesi.tscn" id="1_k8f8b"]
 [ext_resource type="PackedScene" uid="uid://blt22gdd82uj3" path="res://pelaaja/pelaaja.tscn" id="3_nt2wp"]
-[ext_resource type="PackedScene" path="res://kolikko/coin.tscn" id="4_qh04p"]
+[ext_resource type="PackedScene" uid="uid://dv0oxehh2jdh7" path="res://kolikko/coin.tscn" id="4_qh04p"]
+[ext_resource type="AudioStream" uid="uid://cbykowftlsxh2" path="res://musiikki/kolikko.mp3" id="5_ns06i"]
 [ext_resource type="Texture2D" uid="uid://dskoq4j2re1dx" path="res://heart/heart.png" id="6_7vc00"]
+[ext_resource type="AudioStream" uid="uid://b3p1t1jph488" path="res://musiikki/vesi.mp3" id="6_b6row"]
 [ext_resource type="PackedScene" uid="uid://belthbbebqcwt" path="res://level/static_body_2d.tscn" id="7_klgnm"]
 [ext_resource type="Texture2D" uid="uid://cnw2jo1mgjstc" path="res://items/kivi.png" id="8_ry1g7"]
 [ext_resource type="Texture2D" uid="uid://dj7ih8354sy70" path="res://items/lippu.png" id="9_tdkxd"]
 [ext_resource type="PackedScene" uid="uid://bmt4a1jgimath" path="res://tasot/piippu.tscn" id="10_tdkxd"]
 [ext_resource type="Script" uid="uid://c3tda0dgx00bm" path="res://level/maali.gd" id="11_fh3di"]
 [ext_resource type="PackedScene" uid="uid://doiieg5rylgrl" path="res://vihollinen1.tscn" id="12_epufq"]
+[ext_resource type="AudioStream" uid="uid://cvcp8ogo28wl6" path="res://musiikki/maali.mp3" id="13_npgwh"]
+[ext_resource type="AudioStream" uid="uid://csml1sk6j04uy" path="res://musiikki/vihollinen kuolee.mp3" id="16_177d4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epufq"]
 size = Vector2(32, 65)
@@ -39,6 +43,13 @@ tile_set = ExtResource("1_414cb")
 
 [node name="pelaaja" parent="." instance=ExtResource("3_nt2wp")]
 position = Vector2(32, 391)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="pelaaja"]
+stream = ExtResource("5_ns06i")
+volume_db = 2.019
+
+[node name="AudioStreamPlayer2D_vesi2" type="AudioStreamPlayer2D" parent="pelaaja"]
+stream = ExtResource("6_b6row")
 
 [node name="coin" parent="." instance=ExtResource("4_qh04p")]
 position = Vector2(291, 435)
@@ -265,8 +276,14 @@ script = ExtResource("11_fh3di")
 position = Vector2(765, -83.5)
 shape = SubResource("RectangleShape2D_epufq")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="piippu2/maali"]
+stream = ExtResource("13_npgwh")
+
 [node name="vihu" parent="." instance=ExtResource("12_epufq")]
 position = Vector2(286, 448)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="vihu"]
+stream = ExtResource("16_177d4")
 
 [node name="piippu3" parent="." instance=ExtResource("10_tdkxd")]
 position = Vector2(245, 193)
@@ -274,7 +291,13 @@ position = Vector2(245, 193)
 [node name="vihu2" parent="." instance=ExtResource("12_epufq")]
 position = Vector2(815, 544)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="vihu2"]
+stream = ExtResource("16_177d4")
+
 [node name="vihu3" parent="." instance=ExtResource("12_epufq")]
 position = Vector2(726, 144)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="vihu3"]
+stream = ExtResource("16_177d4")
 
 [connection signal="body_entered" from="piippu2/maali" to="piippu2/maali" method="_on_body_entered"]
