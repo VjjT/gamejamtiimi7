@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://ddwgfcpabegla"]
+[gd_scene load_steps=19 format=4 uid="uid://ddwgfcpabegla"]
 
 [ext_resource type="Texture2D" uid="uid://fy6nk5vcwcjg" path="res://taustakuva/pelitausta.png" id="1_0ukcc"]
 [ext_resource type="TileSet" uid="uid://celmanpeemho8" path="res://level/scane/leveltiles.tres" id="1_414cb"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://doiieg5rylgrl" path="res://vihollinen1.tscn" id="12_epufq"]
 [ext_resource type="AudioStream" uid="uid://cvcp8ogo28wl6" path="res://musiikki/maali.mp3" id="13_npgwh"]
 [ext_resource type="AudioStream" uid="uid://csml1sk6j04uy" path="res://musiikki/vihollinen kuolee.mp3" id="16_177d4"]
+[ext_resource type="Texture2D" uid="uid://r81nhrbrb462" path="res://items/puu.png" id="17_i7a4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epufq"]
 size = Vector2(32, 65)
@@ -27,6 +28,7 @@ position = Vector2(1, 0)
 position = Vector2(634, 605)
 
 [node name="taustakuva" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(643, 361)
 texture = ExtResource("1_0ukcc")
 
@@ -64,6 +66,7 @@ offset_top = 41.0
 offset_right = 1216.0
 offset_bottom = 81.0
 texture = ExtResource("6_7vc00")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/heart"]
 offset_left = 1214.0
@@ -71,6 +74,7 @@ offset_top = 41.0
 offset_right = 1254.0
 offset_bottom = 81.0
 texture = ExtResource("6_7vc00")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/heart"]
 offset_left = 1195.0
@@ -78,6 +82,7 @@ offset_top = 21.0
 offset_right = 1235.0
 offset_bottom = 61.0
 texture = ExtResource("6_7vc00")
+metadata/_edit_use_anchors_ = true
 
 [node name="score_label" type="Label" parent="CanvasLayer"]
 offset_left = 81.0
@@ -87,6 +92,7 @@ offset_bottom = 26.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "0000"
+metadata/_edit_use_anchors_ = true
 
 [node name="taso" parent="." instance=ExtResource("7_klgnm")]
 position = Vector2(420, 409)
@@ -299,5 +305,25 @@ position = Vector2(726, 144)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="vihu3"]
 stream = ExtResource("16_177d4")
+
+[node name="Puu" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(111, 400)
+texture = ExtResource("17_i7a4y")
+
+[node name="Puu2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(342, 433)
+texture = ExtResource("17_i7a4y")
+
+[node name="Puu3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(16, 400)
+texture = ExtResource("17_i7a4y")
+
+[node name="Puu4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1010, 564)
+texture = ExtResource("17_i7a4y")
 
 [connection signal="body_entered" from="piippu2/maali" to="piippu2/maali" method="_on_body_entered"]
