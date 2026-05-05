@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmt4a1jgimath"]
+
+[ext_resource type="Texture2D" uid="uid://djvw80wr1ctdy" path="res://tasot/vihreä tolppa.png" id="1_lb1lw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0p8w"]
+size = Vector2(12, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcvuq"]
+size = Vector2(19.75, 4)
+
+[node name="piippu" type="StaticBody2D"]
+position = Vector2(33, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-34, -15)
+texture = ExtResource("1_lb1lw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-33, -12)
+shape = SubResource("RectangleShape2D_h0p8w")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-33.875, -24)
+shape = SubResource("RectangleShape2D_lcvuq")

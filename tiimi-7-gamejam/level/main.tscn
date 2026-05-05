@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://ddwgfcpabegla"]
+[gd_scene load_steps=13 format=4 uid="uid://ddwgfcpabegla"]
 
 [ext_resource type="Texture2D" uid="uid://fy6nk5vcwcjg" path="res://taustakuva/pelitausta.png" id="1_0ukcc"]
 [ext_resource type="TileSet" uid="uid://celmanpeemho8" path="res://level/scane/leveltiles.tres" id="1_414cb"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://belthbbebqcwt" path="res://level/static_body_2d.tscn" id="7_klgnm"]
 [ext_resource type="Texture2D" uid="uid://cnw2jo1mgjstc" path="res://items/kivi.png" id="8_ry1g7"]
 [ext_resource type="Texture2D" uid="uid://dj7ih8354sy70" path="res://items/lippu.png" id="9_tdkxd"]
+[ext_resource type="PackedScene" uid="uid://bmt4a1jgimath" path="res://tasot/piippu.tscn" id="10_tdkxd"]
+[ext_resource type="Script" uid="uid://c3tda0dgx00bm" path="res://level/maali.gd" id="11_fh3di"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epufq"]
+size = Vector2(32, 65)
 
 [node name="main" type="Node2D"]
 position = Vector2(1, 0)
@@ -245,3 +250,18 @@ position = Vector2(1255, 181)
 scale = Vector2(2, 2)
 texture = ExtResource("9_tdkxd")
 vframes = 2
+
+[node name="piippu" parent="." instance=ExtResource("10_tdkxd")]
+position = Vector2(274, 452)
+
+[node name="piippu2" parent="." instance=ExtResource("10_tdkxd")]
+position = Vector2(492, 270)
+
+[node name="maali" type="Area2D" parent="piippu2"]
+script = ExtResource("11_fh3di")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piippu2/maali"]
+position = Vector2(765, -83.5)
+shape = SubResource("RectangleShape2D_epufq")
+
+[connection signal="body_entered" from="piippu2/maali" to="piippu2/maali" method="_on_body_entered"]

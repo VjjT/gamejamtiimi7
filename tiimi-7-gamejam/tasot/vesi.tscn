@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://scy4degaool4"]
 
-[ext_resource type="Script" uid="uid://bsl05cd55etbc" path="res://vesi.gd" id="1_4w4ol"]
+[ext_resource type="Script" uid="uid://bsl05cd55etbc" path="res://tasot/vesi.gd" id="1_4w4ol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnpme"]
 size = Vector2(1332, 35)
