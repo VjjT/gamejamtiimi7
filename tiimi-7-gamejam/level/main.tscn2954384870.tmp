@@ -256,7 +256,7 @@ vframes = 2
 position = Vector2(563, 486)
 
 [node name="piippu2" parent="." instance=ExtResource("10_tdkxd")]
-position = Vector2(512, 276)
+position = Vector2(512, 270)
 
 [node name="maali" type="Area2D" parent="piippu2"]
 script = ExtResource("11_fh3di")

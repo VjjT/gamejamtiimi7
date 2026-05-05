@@ -1,54 +1,75 @@
-[gd_scene load_steps=9 format=3 uid="uid://doiieg5rylgrl"]
+[gd_scene load_steps=12 format=3 uid="uid://doiieg5rylgrl"]
 
 [ext_resource type="Script" uid="uid://ccayha5e5xj4n" path="res://vihollinen_1.gd" id="1_1r3pu"]
 [ext_resource type="Texture2D" uid="uid://bbixw8rp56aev" path="res://vihollinen/vihollinen.png" id="2_72e7d"]
-[ext_resource type="Script" uid="uid://j181kn11fwwc" path="res://vihollinen_kuolee.gd" id="3_x2j15"]
+[ext_resource type="Script" uid="uid://cupvldceo75uu" path="res://hitbox.gd" id="3_ww84s"]
+[ext_resource type="Script" uid="uid://j181kn11fwwc" path="res://hurtbox.gd" id="3_x2j15"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72e7d"]
-radius = 11.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2j15"]
+size = Vector2(20, 5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x2j15"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ww84s"]
+size = Vector2(25, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcg6y"]
 atlas = ExtResource("2_72e7d")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ww84s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkkrv"]
 atlas = ExtResource("2_72e7d")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rcg6y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_owljm"]
+atlas = ExtResource("2_72e7d")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5huc5"]
+atlas = ExtResource("2_72e7d")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bux6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x2j15")
+"texture": SubResource("AtlasTexture_rcg6y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ww84s")
+"texture": SubResource("AtlasTexture_nkkrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owljm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5huc5")
 }],
 "loop": true,
 "name": &"move",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2j15"]
-size = Vector2(13, 5)
-
 [node name="vihu" type="CharacterBody2D"]
 script = ExtResource("1_1r3pu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -14)
-shape = SubResource("CapsuleShape2D_72e7d")
+[node name="hurtbox" type="Area2D" parent="."]
+script = ExtResource("3_x2j15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_x2j15")
+
+[node name="hitbox" type="Area2D" parent="."]
+script = ExtResource("3_ww84s")
+
+[node name="collisionshape2d" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0.5, -10)
+shape = SubResource("RectangleShape2D_ww84s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11)
-scale = Vector2(0.81250006, 1.125)
-sprite_frames = SubResource("SpriteFrames_rcg6y")
+sprite_frames = SubResource("SpriteFrames_3bux6")
 animation = &"move"
 
-[node name="vihollinen kuolee" type="Area2D" parent="."]
-script = ExtResource("3_x2j15")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vihollinen kuolee"]
-position = Vector2(0, -26)
-shape = SubResource("RectangleShape2D_x2j15")
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="hurtbox" to="." method="_on_vihollinen_kuolee_body_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_damage_body_entered"]

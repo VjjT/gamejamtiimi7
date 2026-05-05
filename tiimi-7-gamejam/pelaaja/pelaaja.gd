@@ -15,6 +15,7 @@ func _ready():
 	start_position = global_position
 	update_heart()
 	update_score()
+	add_to_group("player")
 
 func add_score(amount):
 	score += amount
@@ -31,6 +32,10 @@ func update_heart():
 		return
 	for i in range(heart.get_child_count()):
 		heart.get_child(i).visible = i < health
+		
+func take_damage(amount: int = 1):
+	for i in range(amount):
+		die()
 
 func die():
 	health -= 1
