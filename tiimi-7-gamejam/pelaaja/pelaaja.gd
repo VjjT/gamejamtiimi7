@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var heart = get_node("/root/main/CanvasLayer/heart")
+@onready var score_label = get_node("/root/main/CanvasLayer/score_label")
 @onready var sprite = $AnimatedSprite2D
 var score = 0
 var health = 3
@@ -12,13 +13,18 @@ var start_position: Vector2
 
 func _ready():
 	start_position = global_position
-	print("Heart node: ", heart)
-	print("Heart child count: ", heart.get_child_count())
 	update_heart()
+	update_score()
 
 func add_score(amount):
 	score += amount
 	print("Score:", score)
+	update_score()
+
+func update_score():
+	if score_label == null:
+		return
+	score_label.text = "Pisteet: " + str(score)
 
 func update_heart():
 	if heart == null:
@@ -28,7 +34,6 @@ func update_heart():
 
 func die():
 	health -= 1
-	print("Die called! Health now: ", health)
 	update_heart()
 	if health <= 0:
 		print("GAME OVER")
